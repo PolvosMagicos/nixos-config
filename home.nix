@@ -20,6 +20,12 @@ in
 
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    userName = "Polvos Magicos";
+    userEmail = "73202603+PolvosMagicos@users.noreply.github.com";
+  };
+
   home.packages = with pkgs; [
     bat
     curl
