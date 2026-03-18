@@ -24,8 +24,27 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Niri
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  programs.niri.enable = true;
+
+  xdg.portal.enable = true;
+  security.polkit.enable = true;
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Initialize nushell after bash
+  environment.shells = with pkgs; [
+    pkgs.bashInteractive
+    pkgs.nushell
+  ];
+
+  programs.bash.interactiveShellInit = ''
+    if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" && "$XDG_VTNR" = "1" && "$TERM" != "dumb" && -z "$BASH_EXECUTION_STRING" ]]; then
+      exec niri-session
+    fi
+  '';
 
   networking.hostName = "nixos-btw"; # Define your hostname.
 
@@ -75,12 +94,14 @@
   users.users.polvos-magicos = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.bashInteractive;
     packages = with pkgs; [
       tree
     ];
   };
 
   programs.firefox.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -95,6 +116,18 @@
     kitty
     nushell
 
+    # Zen Browser
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # Niri dependencies
+    alacritty
+    xwayland-satellite
+    waybar
+    fuzzel
+    mako
+    wl-clipboard
+    grim
+    slurp
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
