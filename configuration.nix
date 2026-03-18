@@ -10,6 +10,20 @@
       ./hardware-configuration.nix
     ];
 
+  # Previous systemd-boot bootloader, replaced for limine for dual booting windows
+  # boot.loader.systemd-boot.enable = false;
+  boot.loader.limine = {
+    enable = true;
+    secureBoot.enable = true;
+    maxGenerations = 5;
+    extraEntries = "
+      /Windows 11
+        protocol: efi
+	path: guid(35524996-ec85-4d2e-bcec-a14b14299c37):/EFI/Microsoft/Boot/bootmgfw.efi
+    ";
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
