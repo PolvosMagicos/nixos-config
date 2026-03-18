@@ -3,6 +3,14 @@
 let
   user = "polvos-magicos";
   homeDir = "/home/${user}";
+  dotfiles = "${homeDir}/dotfiles/.config";
+
+  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" ];
+
+  mkCfg = name: {
+    name = name;
+    value.source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${name}";
+  };
 in
 {
   home.username = user;
@@ -16,5 +24,18 @@ in
     bat
     curl
     btop
+    fnm
+    fzf
+    lazygit
+    zoxide
+    eza
+    yazi
+    cava
+    rmpc
+    discord
+    spotify
+    steam
   ];
+
+  xdg.configFile = builtins.listToAttrs (map mkCfg configs);
 }
