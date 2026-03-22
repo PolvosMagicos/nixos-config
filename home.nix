@@ -5,7 +5,7 @@ let
   homeDir = "/home/${user}";
   dotfiles = "${homeDir}/dotfiles/.config";
 
-  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" ];
+  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" ];
 
   mkCfg = name: {
     name = name;
@@ -27,6 +27,10 @@ in
   };
 
   home.packages = with pkgs; [
+    gcc
+    ripgrep
+    gnumake
+    tailwindcss-language-server
     bat
     curl
     btop
