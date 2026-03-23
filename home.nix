@@ -44,7 +44,6 @@ in
     rmpc
     discord
     spotify
-    steam
     pciutils
     mesa-demos
     vulkan-tools

@@ -101,6 +101,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.steam.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile.
