@@ -22,8 +22,8 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Polvos Magicos";
-    userEmail = "73202603+PolvosMagicos@users.noreply.github.com";
+    settings.user.name = "Polvos Magicos";
+    settings.user.email = "73202603+PolvosMagicos@users.noreply.github.com";
   };
 
   home.packages = with pkgs; [
