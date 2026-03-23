@@ -45,6 +45,9 @@ in
     discord
     spotify
     steam
+    pciutils
+    mesa-demos
+    vulkan-tools
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);
