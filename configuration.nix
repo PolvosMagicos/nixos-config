@@ -130,6 +130,43 @@
     slurp
   ];
 
+  # Nvidia config
+  hardware.graphics.enable = true;
+
+  services.xserver.videoDrivers = [
+    "amdgpu"
+    "nvidia"
+  ];
+  
+  hardware.nvidia = {
+    # Selecting specific driver version for linux kernel 6.19.6
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "580.142";
+      sha256_64bit = "sha256-IJFfzz/+icNVDPk7YKBKKFRTFQ2S4kaOGRGkNiBEdWM=";
+      sha256_aarch64 = pkgs.lib.fakeHash;
+      openSha256 = "sha256-v968LbRqy8jB9+yHy9ceP2TDdgyqfDQ6P41NsCoM2AY=";
+      settingsSha256 = "sha256-BnrIlj5AvXTfqg/qcBt2OS9bTDDZd3uhf5jqOtTMTQM=";
+      persistencedSha256 = pkgs.lib.fakeHash;
+    };
+
+    modesetting.enable = true;
+    powerManagement.enable = true;
+
+    open = true;
+
+    nvidiaSettings = true;
+
+    prime = {
+      amdgpuBusId = "PCI:101@0:0:0";
+      nvidiaBusId = "PCI:1@0:0:0";
+
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
