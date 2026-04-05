@@ -47,6 +47,8 @@ in
     pciutils
     mesa-demos
     vulkan-tools
+    nvtopPackages.full
+    vial
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);

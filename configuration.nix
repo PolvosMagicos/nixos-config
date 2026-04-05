@@ -131,6 +131,15 @@
     slurp
   ];
 
+  # qmk rules
+  services.udev.packages = with pkgs; [
+    qmk-udev-rules
+  ];
+
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  '';
+
   # Nvidia config
   hardware.graphics.enable = true;
 
