@@ -100,10 +100,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
+  # Android
+  nixpkgs.config.android_sdk.accept_license = true;
+  programs.nix-ld.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.polvos-magicos = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "kvm" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.bashInteractive;
     packages = with pkgs; [
       tree
@@ -139,6 +143,11 @@
     wl-clipboard
     grim
     slurp
+
+    # Android
+    android-studio
+    android-tools
+    javaPackages.compiler.openjdk17
   ];
 
   # qmk rules

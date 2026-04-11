@@ -37,6 +37,9 @@ in
   };
 
   home.packages = with pkgs; [
+    nodejs_24
+    watchman
+    scrcpy
     gcc
     ripgrep
     gnumake
