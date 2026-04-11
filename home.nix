@@ -26,6 +26,16 @@ in
     settings.user.email = "73202603+PolvosMagicos@users.noreply.github.com";
   };
 
+  programs.vesktop = {
+    enable = true;
+
+    vencord.settings = {
+      autoUpdate = true;
+      autoUpdateNotification = true;
+      notifyAboutUpdates = true;
+    };
+  };
+
   home.packages = with pkgs; [
     gcc
     ripgrep
@@ -42,7 +52,6 @@ in
     yazi
     cava
     rmpc
-    discord
     spotify
     pciutils
     mesa-demos
