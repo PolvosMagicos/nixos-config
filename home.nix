@@ -61,6 +61,8 @@ in
     vulkan-tools
     nvtopPackages.full
     vial
+    quickshell
+    kdePackages.qtdeclarative
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);

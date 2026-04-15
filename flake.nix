@@ -19,6 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, niri,  ... }: {
@@ -30,7 +34,7 @@
 	      ./hardware-configuration.nix
 	      # lanzaboote.nixosModules.lanzaboote
 
-	      # Niri
+	      # Niri activate for unstable version
 	      # niri.nixosModules.niri
 
 	      #Home manager config
