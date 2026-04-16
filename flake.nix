@@ -25,7 +25,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, niri,  ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, niri, ... }: {
     nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -34,8 +34,9 @@
 	      ./hardware-configuration.nix
 	      # lanzaboote.nixosModules.lanzaboote
 
-	      # Niri activate for unstable version
-	      # niri.nixosModules.niri
+	      # Niri
+        # activate for unstable version
+        # niri.nixosModules.niri
 
 	      #Home manager config
 	      home-manager.nixosModules.default
@@ -44,6 +45,7 @@
             useGlobalPkgs = true;
 	          useUserPackages = true;
 	          backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
 	          users.polvos-magicos = ./home.nix;
 	        };
 	      }

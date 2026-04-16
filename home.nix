@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   user = "polvos-magicos";
   homeDir = "/home/${user}";
   dotfiles = "${homeDir}/dotfiles/.config";
 
-  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" ];
+  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" "quickshell" ];
 
   mkCfg = name: {
     name = name;
@@ -61,7 +61,7 @@ in
     vulkan-tools
     nvtopPackages.full
     vial
-    quickshell
+    inputs.quickshell.packages.${pkgs.system}.default
     kdePackages.qtdeclarative
   ];
 
