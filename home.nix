@@ -37,6 +37,7 @@ in
   };
 
   home.packages = with pkgs; [
+    papirus-icon-theme
     nodejs_24
     watchman
     scrcpy

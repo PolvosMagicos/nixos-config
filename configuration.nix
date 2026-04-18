@@ -64,6 +64,9 @@
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Upower
+  services.upower.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Lima";
 
