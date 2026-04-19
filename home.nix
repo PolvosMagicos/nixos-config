@@ -62,7 +62,7 @@ in
     vulkan-tools
     nvtopPackages.full
     vial
-    inputs.quickshell.packages.${pkgs.system}.default
+    inputs.qml-niri.packages.${pkgs.stdenv.hostPlatform.system}.quickshell
     kdePackages.qtdeclarative
   ];
 
