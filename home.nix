@@ -64,6 +64,7 @@ in
     vial
     inputs.qml-niri.packages.${pkgs.stdenv.hostPlatform.system}.quickshell
     kdePackages.qtdeclarative
+    inputs.codex-cli-nix.packages.${pkgs.system}.default
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);

@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,24 +39,24 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./configuration.nix
-	      ./hardware-configuration.nix
-	      # lanzaboote.nixosModules.lanzaboote
+        ./hardware-configuration.nix
+        # lanzaboote.nixosModules.lanzaboote
 
-	      # Niri
+        # Niri
         # activate for unstable version
         # niri.nixosModules.niri
 
-	      #Home manager config
-	      home-manager.nixosModules.default
-	      {
-	        home-manager = {
+        # Home manager config
+        home-manager.nixosModules.default
+        {
+          home-manager = {
             useGlobalPkgs = true;
-	          useUserPackages = true;
-	          backupFileExtension = "backup";
+            useUserPackages = true;
+            backupFileExtension = "backup";
             extraSpecialArgs = { inherit inputs; };
-	          users.polvos-magicos = ./home.nix;
-	        };
-	      }
+            users.polvos-magicos = ./home.nix;
+          };
+        }
       ];
     };
   };
