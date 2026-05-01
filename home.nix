@@ -70,6 +70,9 @@ in
     cloudflared
     insomnia
     dig
+    rustup
+    pkg-config
+    openssl
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);

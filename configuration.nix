@@ -110,7 +110,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.polvos-magicos = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "kvm" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "kvm" "dialout" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.bashInteractive;
     packages = with pkgs; [
       tree
