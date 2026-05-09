@@ -5,7 +5,7 @@ let
   homeDir = "/home/${user}";
   dotfiles = "${homeDir}/dotfiles/.config";
 
-  configs = [ "cava" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" "quickshell" ];
+  configs = [ "cava" "containers" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" "quickshell" ];
 
   mkCfg = name: {
     name = name;
@@ -66,6 +66,7 @@ in
     kdePackages.qtdeclarative
     inputs.codex-cli-nix.packages.${pkgs.system}.default
     podman
+    podman-compose
     python314
     cloudflared
     insomnia
@@ -73,6 +74,8 @@ in
     rustup
     pkg-config
     openssl
+    bubblewrap
+    bun
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);
