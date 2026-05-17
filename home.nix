@@ -64,7 +64,7 @@ in
     vial
     inputs.qml-niri.packages.${pkgs.stdenv.hostPlatform.system}.quickshell
     kdePackages.qtdeclarative
-    inputs.codex-cli-nix.packages.${pkgs.system}.default
+    inputs.codex-cli-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
     podman
     podman-compose
     python314
@@ -76,6 +76,9 @@ in
     openssl
     bubblewrap
     bun
+    keepassxc
+    obs-studio
+    ocrmypdf
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);
