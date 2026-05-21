@@ -56,7 +56,7 @@
             useUserPackages = true;
             backupFileExtension = "backup";
             extraSpecialArgs = { inherit inputs; };
-            users.polvos-magicos = ./home.nix;
+            users.polvos-magicos = ./home;
           };
         }
       ];
