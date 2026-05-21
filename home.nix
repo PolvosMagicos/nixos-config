@@ -4,6 +4,11 @@ let
   user = "polvos-magicos";
   homeDir = "/home/${user}";
   dotfiles = "${homeDir}/dotfiles/.config";
+  system = pkgs.stdenv.hostPlatform.system;
+
+  yaziPkg = inputs.yazi.packages.${system}.default.override {
+    _7zz = pkgs._7zz-rar;
+  };
 
   configs = [ "cava" "containers" "kitty" "mpd" "nushell" "nvim" "rmpc" "yazi" "niri" "quickshell" ];
 
@@ -53,7 +58,7 @@ in
     lazygit
     zoxide
     eza
-    yazi
+    yaziPkg
     cava
     rmpc
     spotify
@@ -79,6 +84,9 @@ in
     keepassxc
     obs-studio
     ocrmypdf
+    udisks2
+    util-linux
+    eject
   ];
 
   xdg.configFile = builtins.listToAttrs (map mkCfg configs);
