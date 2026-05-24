@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./gpu-apps.nix
     ];
 
   # Previous systemd-boot bootloader, replaced for limine for dual booting windows

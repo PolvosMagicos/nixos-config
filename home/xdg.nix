@@ -4,6 +4,7 @@ let
   configs = [
     "cava"
     "containers"
+    "fuzzel"
     "kitty"
     "mpd"
     "nushell"
