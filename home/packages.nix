@@ -54,6 +54,7 @@
     vulkan-tools
     nvtopPackages.full
     vial
+    lshw
 
     # Niri / Quickshell
     inputs.qml-niri.packages.${system}.quickshell

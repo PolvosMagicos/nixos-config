@@ -175,14 +175,19 @@
   
   hardware.nvidia = {
     # Selecting specific driver version for linux kernel 6.19.6
-    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-      version = "580.142";
-      sha256_64bit = "sha256-IJFfzz/+icNVDPk7YKBKKFRTFQ2S4kaOGRGkNiBEdWM=";
-      sha256_aarch64 = pkgs.lib.fakeHash;
-      openSha256 = "sha256-v968LbRqy8jB9+yHy9ceP2TDdgyqfDQ6P41NsCoM2AY=";
-      settingsSha256 = "sha256-BnrIlj5AvXTfqg/qcBt2OS9bTDDZd3uhf5jqOtTMTQM=";
-      persistencedSha256 = pkgs.lib.fakeHash;
-    };
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "580.142";
+    #   sha256_64bit = "sha256-IJFfzz/+icNVDPk7YKBKKFRTFQ2S4kaOGRGkNiBEdWM=";
+    #   sha256_aarch64 = pkgs.lib.fakeHash;
+    #   openSha256 = "sha256-v968LbRqy8jB9+yHy9ceP2TDdgyqfDQ6P41NsCoM2AY=";
+    #   settingsSha256 = "sha256-BnrIlj5AvXTfqg/qcBt2OS9bTDDZd3uhf5jqOtTMTQM=";
+    #   persistencedSha256 = pkgs.lib.fakeHash;
+    # };
+
+    # Prefer Nixpkgs-managed driver instead of manual mkDriver hashes.
+    # Use beta only if production/stable gives problems with the RTX 5060.
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+    # package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     modesetting.enable = true;
     powerManagement.enable = true;
