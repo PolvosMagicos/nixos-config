@@ -156,6 +156,13 @@
     javaPackages.compiler.openjdk17
   ];
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-color-emoji
+  ];
+
   # qmk rules
   services.udev.packages = with pkgs; [
     qmk-udev-rules
@@ -205,6 +212,12 @@
         enableOffloadCmd = true;
       };
     };
+  };
+
+  # Zram swap
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
