@@ -28,6 +28,12 @@
     rustup
     python314
 
+    # iot tools
+    platformio
+    cargo-generate
+    espflash
+    ldproxy
+
     # React Native / Android helpers
     watchman
     scrcpy
@@ -47,6 +53,7 @@
     cava
     rmpc
     yaziPkg
+    sshx
 
     # Hardware / GPU tools
     pciutils
@@ -61,6 +68,9 @@
 
     # AI / tools
     inputs.codex-cli-nix.packages.${system}.default
+
+    # Lsp's
+    (pkgs.lib.hiPrio pkgs.rust-analyzer)
 
     # Other
     cloudflared
