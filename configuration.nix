@@ -29,15 +29,32 @@
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri.enable = true;
 
-  xdg.portal = {
+xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
+
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          max_fps = 60;
+          force_mod_linear = true;
+        };
+      };
+    };
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
     ];
+
     config = {
-      common.default = [ "gnome" ];
+      niri = {
+        default = lib.mkForce [ "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = lib.mkForce [ "wlr" ];
+        "org.freedesktop.impl.portal.Screenshot" = lib.mkForce [ "wlr" ];
+        "org.freedesktop.impl.portal.FileChooser" = lib.mkForce [ "gtk" ];
+      };
     };
   };
   security.polkit.enable = true;
