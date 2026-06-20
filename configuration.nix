@@ -79,6 +79,14 @@ xdg.portal = {
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
+  # TCP ports
+  networking.firewall.allowedTCPPorts = [
+    1883 # MQTT broker, needed by ESP32
+    1880 # Node-RED, only if accessed from other devices
+    3000 # Grafana, only if accessed from other devices
+    8086 # InfluxDB, usually not needed externally
+  ];
+
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
