@@ -72,9 +72,13 @@
     # Lsp's
     (pkgs.lib.hiPrio pkgs.rust-analyzer)
 
+    # Games
+    prismlauncher
+
     # Other
     cloudflared
     bubblewrap
     ocrmypdf
+    easyeffects
   ];
 }
