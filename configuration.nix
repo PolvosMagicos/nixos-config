@@ -171,7 +171,6 @@ xdg.portal = {
     xwayland-satellite
     waybar
     fuzzel
-    mako
     wl-clipboard
     grim
     slurp
