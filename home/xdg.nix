@@ -7,6 +7,7 @@ let
     "fuzzel"
     "kitty"
     "mpd"
+    "mpv"
     "nushell"
     "nvim"
     "rmpc"
