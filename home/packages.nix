@@ -48,6 +48,8 @@
     keepassxc
     obs-studio
     insomnia
+    mpv
+    vlc
 
     # Media / terminal apps
     cava
@@ -80,5 +82,9 @@
     bubblewrap
     ocrmypdf
     easyeffects
+    libnotify
+
+    # Utils
+    qbittorrent
   ];
 }
