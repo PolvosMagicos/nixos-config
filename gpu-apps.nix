@@ -2,7 +2,6 @@
 
 let
   autoGpuRun = pkgs.writeShellScriptBin "auto-gpu-run" ''
-    #!/usr/bin/env bash
     set -euo pipefail
 
     if [ "$#" -lt 1 ]; then
@@ -11,7 +10,7 @@ let
     fi
 
     app="$1"
-    shift || true
+    shift
 
     on_ac=0
 
@@ -57,11 +56,27 @@ let
     terminal = false;
     categories = [ "Network" "Chat" ];
   };
+
+  tidalAutoGpuDesktop = pkgs.makeDesktopItem {
+    name = "tidal-hifi-auto-gpu";
+    desktopName = "TIDAL Hi-Fi Auto GPU";
+    genericName = "Music Player";
+    comment = "Launch TIDAL with NVIDIA offload only when plugged in";
+
+    exec = "${autoGpuRun}/bin/auto-gpu-run ${pkgs.tidal-hifi}/bin/tidal-hifi --disable-dev-shm-usage --ozone-platform=x11 %U";
+
+    icon = "tidal-hifi";
+    terminal = false;
+    categories = [ "AudioVideo" "Audio" "Music" "Player" ];
+    mimeTypes = [ "x-scheme-handler/tidal" ];
+  };
 in
 {
   environment.systemPackages = [
     autoGpuRun
+
     zenAutoGpuDesktop
     vesktopAutoGpuDesktop
+    tidalAutoGpuDesktop
   ];
 }

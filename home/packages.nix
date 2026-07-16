@@ -56,6 +56,7 @@
     vlc
     jetbrains.datagrip
     postman
+    tidal-hifi
 
     # Media / terminal apps
     cava
