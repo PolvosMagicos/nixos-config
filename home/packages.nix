@@ -16,6 +16,10 @@
     zoxide
     btop
     lazygit
+    buildah
+    kubectl
+    postgresql
+    minikube
 
     # Shell / dev tools
     fnm
@@ -50,6 +54,8 @@
     insomnia
     mpv
     vlc
+    jetbrains.datagrip
+    postman
 
     # Media / terminal apps
     cava
