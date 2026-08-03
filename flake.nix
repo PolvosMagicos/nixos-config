@@ -11,11 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     yazi.url = "github:sxyazi/yazi";
 
     zen-browser = {
@@ -35,7 +30,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, niri, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -43,10 +38,6 @@
         ./configuration.nix
         ./hardware-configuration.nix
         # lanzaboote.nixosModules.lanzaboote
-
-        # Niri
-        # activate for unstable version
-        # niri.nixosModules.niri
 
         # Home manager config
         home-manager.nixosModules.default

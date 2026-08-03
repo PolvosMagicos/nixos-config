@@ -81,6 +81,9 @@
     # Lsp's
     (pkgs.lib.hiPrio pkgs.rust-analyzer)
 
+    # Neovim
+    tree-sitter
+
     # Games
     prismlauncher
 
@@ -93,5 +96,6 @@
 
     # Utils
     qbittorrent
+    normcap
   ];
 }

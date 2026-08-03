@@ -26,7 +26,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Niri
-  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri.enable = true;
 
 xdg.portal = {
@@ -289,4 +288,3 @@ xdg.portal = {
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
