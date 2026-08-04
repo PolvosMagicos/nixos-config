@@ -73,7 +73,10 @@
     lshw
 
     # Niri / Quickshell
-    inputs.qml-niri.packages.${system}.quickshell
+    (inputs.quickshell.packages.${system}.default.withModules [
+      inputs.qml-niri.packages.${system}.default
+      kdePackages.qtmultimedia
+    ])
 
     # AI / tools
     inputs.codex-cli-nix.packages.${system}.default
