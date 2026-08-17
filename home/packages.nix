@@ -57,6 +57,7 @@
     jetbrains.datagrip
     postman
     tidal-hifi
+    teams-for-linux
 
     # Media / terminal apps
     cava
