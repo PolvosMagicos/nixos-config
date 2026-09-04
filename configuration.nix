@@ -59,7 +59,7 @@ xdg.portal = {
   security.polkit.enable = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_7_1;
 
   # Initialize nushell after bash
   environment.shells = with pkgs; [
