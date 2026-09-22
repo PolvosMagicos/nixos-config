@@ -90,6 +90,7 @@
 
     # Games
     prismlauncher
+    inputs.osu-lazer.packages.${system}.osu-lazer-bin
 
     # Other
     cloudflared

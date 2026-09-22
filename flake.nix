@@ -6,6 +6,8 @@
 
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
 
+    osu-lazer.url = "github:repinek/osu-lazer-flake";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
