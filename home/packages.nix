@@ -1,5 +1,21 @@
 { pkgs, inputs, system, yaziPkg, ... }:
 
+let
+  codexVersion = "0.160.0";
+  codex = pkgs.runCommand "codex-${codexVersion}" {
+    nativeBuildInputs = with pkgs; [ gnutar gzip installShellFiles ];
+  } ''
+    mkdir -p "$out"
+    tar -xzf ${pkgs.fetchurl {
+      url = "https://github.com/openai/codex/releases/download/rust-v${codexVersion}/codex-npm-linux-x64-${codexVersion}.tgz";
+      hash = "sha256-N6QdYcM5kYK4xye3cJDMehVmvYSdDwkHCgu8b+xMWNw=";
+    }} --strip-components=3 -C "$out"
+    installShellCompletion --cmd codex \
+      --bash <("$out/bin/codex" completion bash) \
+      --fish <("$out/bin/codex" completion fish) \
+      --zsh <("$out/bin/codex" completion zsh)
+  '';
+in
 {
   home.packages = with pkgs; [
     # Theme / UI
@@ -56,7 +72,7 @@
     vlc
     jetbrains.datagrip
     postman
-    tidal-hifi
+    sone
     teams-for-linux
 
     # Media / terminal apps
@@ -80,7 +96,7 @@
     ])
 
     # AI / tools
-    inputs.codex-cli-nix.packages.${system}.default
+    codex
 
     # Lsp's
     (pkgs.lib.hiPrio pkgs.rust-analyzer)

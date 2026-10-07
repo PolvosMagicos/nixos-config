@@ -28,7 +28,7 @@
   # Niri
   programs.niri.enable = true;
 
-xdg.portal = {
+  xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
 
@@ -89,6 +89,13 @@ xdg.portal = {
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Keep Codex's protected socket on a filesystem whose mount ID matches stat.
+  fileSystems."/tmp/codex-daemon-1000" = {
+    device = "tmpfs";
+    fsType = "tmpfs";
+    options = [ "uid=1000" "mode=0700" "size=16M" "nosuid" "nodev" "noexec" "nofail" ];
+  };
+
   # Upower
   services.upower.enable = true;
 
@@ -138,6 +145,7 @@ xdg.portal = {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.polvos-magicos = {
     isNormalUser = true;
+    uid = 1000;
     extraGroups = [ "wheel" "kvm" "dialout" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.bashInteractive;
     packages = with pkgs; [

@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
-
     osu-lazer.url = "github:repinek/osu-lazer-flake";
 
     home-manager = {
