@@ -14,9 +14,13 @@
   # Previous systemd-boot bootloader, replaced for limine for dual booting windows
   # boot.loader.systemd-boot.enable = false;
   boot.loader.limine = {
-    enable = true;
-    secureBoot.enable = true;
-    maxGenerations = 5;
+  enable = true;
+
+  secureBoot.enable = true;
+
+  efiInstallAsRemovable = true;
+
+  maxGenerations = 5;
     extraEntries = "
       /Windows 11
         protocol: efi
