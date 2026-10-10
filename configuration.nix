@@ -63,7 +63,7 @@
   security.polkit.enable = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_7_1;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Initialize nushell after bash
   environment.shells = with pkgs; [
@@ -217,20 +217,15 @@
   ];
   
   hardware.nvidia = {
-    # Selecting specific driver version for linux kernel 6.19.6
-    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    #   version = "580.142";
-    #   sha256_64bit = "sha256-IJFfzz/+icNVDPk7YKBKKFRTFQ2S4kaOGRGkNiBEdWM=";
-    #   sha256_aarch64 = pkgs.lib.fakeHash;
-    #   openSha256 = "sha256-v968LbRqy8jB9+yHy9ceP2TDdgyqfDQ6P41NsCoM2AY=";
-    #   settingsSha256 = "sha256-BnrIlj5AvXTfqg/qcBt2OS9bTDDZd3uhf5jqOtTMTQM=";
-    #   persistencedSha256 = pkgs.lib.fakeHash;
-    # };
-
-    # Prefer Nixpkgs-managed driver instead of manual mkDriver hashes.
-    # Use beta only if production/stable gives problems with the RTX 5060.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
-    # package = config.boot.kernelPackages.nvidiaPackages.beta;
+    # shortcut: driver updates are manual, use nvidiaPackages.latest once 26.05 supports Linux 7.2.
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "615.71.09";
+      sha256_64bit = "sha256-zc7tIrvrYSSNGm3qvCWWZz46ZQFpjucayNL9wo87cP4=";
+      sha256_aarch64 = "sha256-IbekQhE7cFfmnPZaLY9NDYcF7CoNZ+2Qb7sRd4EOgWM=";
+      openSha256 = "sha256-3gByMYIwFzRaLdDG+roCEOuKRRJDrljG9AlLnRZTirM=";
+      settingsSha256 = "sha256-LK1LU8mDkM/XVRKPBtuOZh9nIP/lGFLAJnmasEX8jhg=";
+      persistencedSha256 = "sha256-qPRb+3d88+2RcpUkoBTbjIaImnQ+jX+/6p1vXcJ5geE=";
+    };
 
     modesetting.enable = true;
     powerManagement.enable = true;
