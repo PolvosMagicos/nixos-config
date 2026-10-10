@@ -83,6 +83,9 @@
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # TCP ports
   networking.firewall.allowedTCPPorts = [
     1883 # MQTT broker, needed by ESP32
