@@ -14,18 +14,19 @@
   # Previous systemd-boot bootloader, replaced for limine for dual booting windows
   # boot.loader.systemd-boot.enable = false;
   boot.loader.limine = {
-  enable = true;
+    enable = true;
 
-  secureBoot.enable = true;
+    secureBoot.enable = true;
 
-  efiInstallAsRemovable = true;
+    # Keep the normal named "Limine" UEFI entry.
+    efiInstallAsRemovable = false;
 
-  maxGenerations = 5;
-    extraEntries = "
-      /Windows 11
-        protocol: efi
-	path: guid(35524996-ec85-4d2e-bcec-a14b14299c37):/EFI/Microsoft/Boot/bootmgfw.efi
-    ";
+    maxGenerations = 5;
+      extraEntries = "
+        /Windows 11
+          protocol: efi
+    path: guid(35524996-ec85-4d2e-bcec-a14b14299c37):/EFI/Microsoft/Boot/bootmgfw.efi
+      ";
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
