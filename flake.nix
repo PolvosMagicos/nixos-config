@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+    claude-code.url = "github:jamiebrynes7/claude-code-native-nix";
+
     osu-lazer.url = "github:repinek/osu-lazer-flake";
 
     home-manager = {

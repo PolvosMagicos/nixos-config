@@ -98,6 +98,7 @@ in
 
     # AI / tools
     codex
+    inputs.claude-code.packages.${system}.default
 
     # Lsp's
     (pkgs.lib.hiPrio pkgs.rust-analyzer)
