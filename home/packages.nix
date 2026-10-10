@@ -1,14 +1,14 @@
 { pkgs, inputs, system, yaziPkg, ... }:
 
 let
-  codexVersion = "0.160.0";
+  codexVersion = "0.162.1";
   codex = pkgs.runCommand "codex-${codexVersion}" {
     nativeBuildInputs = with pkgs; [ gnutar gzip installShellFiles ];
   } ''
     mkdir -p "$out"
     tar -xzf ${pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${codexVersion}/codex-npm-linux-x64-${codexVersion}.tgz";
-      hash = "sha256-N6QdYcM5kYK4xye3cJDMehVmvYSdDwkHCgu8b+xMWNw=";
+      hash = "sha256-dBdxFni0ZO7nBmQSbjnoi7PITCko2g5x8UtW4E/1wJ8=";
     }} --strip-components=3 -C "$out"
     installShellCompletion --cmd codex \
       --bash <("$out/bin/codex" completion bash) \
