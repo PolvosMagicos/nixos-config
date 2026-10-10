@@ -47,6 +47,7 @@ in
     openssl
     rustup
     python314
+    chromium
 
     # iot tools
     platformio
